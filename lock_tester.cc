@@ -26,8 +26,7 @@ lock_protocol::lockid_t c = 3;
 int ct[256];
 pthread_mutex_t count_mutex;
 
-void
-check_grant(lock_protocol::lockid_t lid)
+void check_grant(lock_protocol::lockid_t lid)
 {
   ScopedLock ml(&count_mutex);
   int x = lid & 0xff;
@@ -39,8 +38,7 @@ check_grant(lock_protocol::lockid_t lid)
   ct[x] += 1;
 }
 
-void
-check_release(lock_protocol::lockid_t lid)
+void check_release(lock_protocol::lockid_t lid)
 {
   ScopedLock ml(&count_mutex);
   int x = lid & 0xff;
@@ -51,8 +49,7 @@ check_release(lock_protocol::lockid_t lid)
   ct[x] -= 1;
 }
 
-void
-test1(void)
+void test1(void)
 {
     printf ("acquire a release a acquire a release a\n");
     lc[0]->acquire(a);
@@ -75,8 +72,7 @@ test1(void)
     check_release(a);
 }
 
-void *
-test2(void *x) 
+void *test2(void *x) 
 {
   int i = * (int *) x;
 
@@ -92,8 +88,7 @@ test2(void *x)
   return 0;
 }
 
-void *
-test3(void *x)
+void *test3(void *x)
 {
   int i = * (int *) x;
 
@@ -108,8 +103,7 @@ test3(void *x)
   return 0;
 }
 
-void *
-test4(void *x)
+void *test4(void *x)
 {
   int i = * (int *) x;
 
@@ -124,8 +118,7 @@ test4(void *x)
   return 0;
 }
 
-void *
-test5(void *x)
+void *test5(void *x)
 {
   int i = * (int *) x;
 
@@ -142,8 +135,7 @@ test5(void *x)
   return 0;
 }
 
-int
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
     int r;
     pthread_t th[nt];

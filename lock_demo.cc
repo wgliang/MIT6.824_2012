@@ -13,8 +13,7 @@
 std::string dst;
 lock_client *lc;
 
-int
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
   int r;
 
