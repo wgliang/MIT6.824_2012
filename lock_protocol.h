@@ -17,4 +17,16 @@ class lock_protocol {
   };
 };
 
+//define lock
+class lock {
+public:
+	enum lock_status {FREE, LOCKED};
+	lock_protocol::lockid_t lid;//the lock's only id
+	int status;//the status of lock
+	pthread_cond_t lcond;//condition 
+	lock(lock_protocol::lockid_t);
+	lock(lock_protocol::lockid_t, int);
+	~lock(){};
+};
+
 #endif 
